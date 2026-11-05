@@ -1,0 +1,7 @@
+# Una ruta o glob por línea (sintaxis bash). Solo se modifican con pedido explícito del usuario.
+AGENTS.md
+.agents/*
+docs/decisions/*
+db/migrations/*
+.env*
+docker-compose*.yml
