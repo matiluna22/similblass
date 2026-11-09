@@ -2,7 +2,7 @@ name: Desplegar en GitHub Pages
 
 on:
   push:
-    branches: ['master']
+    branches: ['master', 'main']
   workflow_dispatch:
 
 permissions:
@@ -20,6 +20,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
     steps:
       - name: Descargar codigo
         uses: actions/checkout@v4
@@ -27,15 +30,13 @@ jobs:
       - name: Instalar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
-          cache-dependency-path: 'web/package-lock.json'
+          node-version: 22
 
       - name: Instalar dependencias
-        run: npm --prefix web ci
+        run: npm install
 
       - name: Compilar aplicacion web
-        run: npm --prefix web run build
+        run: npm run build
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
@@ -43,9 +44,8 @@ jobs:
       - name: Subir artefacto de Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'web/dist'
+          path: web/dist
 
       - name: Publicar en GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-

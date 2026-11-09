@@ -1,30 +1,19 @@
 @echo off
-title Arreglar Vicky Page en Git y GitHub
+title Subir Cambios a GitHub y Publicar Web
 echo ======================================================
-echo   1. Quitando Vicky page como sub-repositorio...
+echo   Guardando y subiendo el nuevo flujo de GitHub Pages...
 echo ======================================================
 echo.
 
 cd /d "%~dp0"
 
-git rm --cached "Vicky page"
-git add "Vicky page"
 git add -A
-git commit -m "fix: convertir Vicky page en carpeta normal y configurar deploy para GitHub Pages"
-
-echo.
-echo ======================================================
-echo   2. Subiendo cambios a GitHub...
-echo ======================================================
-echo.
-
+git commit -m "fix(ci): fix github pages workflow working-directory and build"
 git push
 
 echo.
 echo ======================================================
-echo   Listo!
-echo   - Vicky page ahora es una carpeta normal de archivos.
-echo   - La web se publicara automaticamente en GitHub Pages.
+echo   Listo! Cambios subidos a GitHub.
+echo   GitHub Actions compilara y publicara la web ahora.
 echo ======================================================
 pause
-
