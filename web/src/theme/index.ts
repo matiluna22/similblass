@@ -7,21 +7,48 @@ declare module '@mui/material/styles' {
   interface PaletteOptions {
     whatsapp?: PaletteOptions['primary'];
   }
+  interface BreakpointOverrides {
+    nav: true;
+    press: true;
+  }
 }
 
 let theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      nav: 769,
+      press: 861,
+      lg: 1025,
+      xl: 1440,
+    },
+  },
   palette: {
     mode: 'light',
     primary: {
-      main: '#B45309', // Warm amber / Safari sunset
-      dark: '#78350F',
-      light: '#D97706',
+      main: '#344C36',
+      dark: '#233625',
+      light: '#456347',
       contrastText: '#FFFFFF',
     },
     secondary: {
-      main: '#1E3A2F', // Deep savanna forest green
-      dark: '#14271F',
-      light: '#2D5544',
+      main: '#A6845B',
+      dark: '#7A5C3A',
+      light: '#C5A882',
+      contrastText: '#1C241C',
+    },
+    error: {
+      main: '#B42318',
+      contrastText: '#FFFFFF',
+    },
+    warning: {
+      main: '#8A4B08',
+      contrastText: '#FFFFFF',
+    },
+    success: {
+      main: '#267341',
       contrastText: '#FFFFFF',
     },
     background: {
@@ -29,16 +56,17 @@ let theme = createTheme({
       paper: '#FFFFFF',
     },
     text: {
-      primary: '#1C1917', // Earth dark, high contrast > 7:1
-      secondary: '#57534E', // Warm gray
+      primary: '#1C241C',
+      secondary: '#485449',
     },
     whatsapp: {
       main: '#25D366',
       dark: '#1EBE5D',
       light: '#4CE085',
-      contrastText: '#FFFFFF',
+      contrastText: '#162417',
     },
   },
+  spacing: 8,
   typography: {
     fontFamily: '"Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
     h1: {
@@ -73,6 +101,12 @@ let theme = createTheme({
       fontSize: '1.125rem',
       lineHeight: 1.6,
     },
+    body1: {
+      lineHeight: 1.65,
+    },
+    body2: {
+      lineHeight: 1.65,
+    },
     button: {
       textTransform: 'none',
       fontWeight: 600,
@@ -80,7 +114,7 @@ let theme = createTheme({
     },
   },
   shape: {
-    borderRadius: 12,
+    borderRadius: 14,
   },
   components: {
     MuiButton: {
@@ -93,18 +127,12 @@ let theme = createTheme({
             boxShadow: '0 4px 14px rgba(0, 0, 0, 0.1)',
           },
         },
-        contained: {
-          backgroundColor: '#B45309',
-          '&:hover': {
-            backgroundColor: '#92400E',
-          },
-        },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 16,
+          borderRadius: 24,
           boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
           transition: 'transform 0.25s ease, box-shadow 0.25s ease',
           '&:hover': {
