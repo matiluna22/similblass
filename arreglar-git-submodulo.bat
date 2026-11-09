@@ -9,7 +9,7 @@ cd /d "%~dp0"
 
 git add -A
 git commit -m "fix(ci): fix github pages workflow working-directory and build"
-git push
+git push https://github.com/matiluna22/similblass.git
 
 echo.
 echo ======================================================
